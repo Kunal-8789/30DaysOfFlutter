@@ -15,6 +15,6 @@ class CatalogImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       image,
-    ).box.p8.rounded.color(MyTheme.creameColor).make().w40(context).p16();
+    ).box.rounded.p8.color(MyTheme.creameColor).make().p16().w40(context);
   }
 }
