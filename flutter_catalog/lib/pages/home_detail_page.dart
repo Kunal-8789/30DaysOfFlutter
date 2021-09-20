@@ -1,6 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
-import 'package:flutter_catalog/widgets/Theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
@@ -13,26 +14,8 @@ class HomeDetailPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
         ),
-        backgroundColor: MyTheme.creameColor,
-        bottomNavigationBar: Container(
-          color: Colors.white,
-          child: ButtonBar(
-            alignment: MainAxisAlignment.spaceBetween,
-            buttonPadding: EdgeInsets.zero,
-            children: [
-              "\$${catalog.price}".text.bold.red800.xl4.make(),
-              ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                      MyTheme.darkBluishColor,
-                    ),
-                    shape: MaterialStateProperty.all(StadiumBorder())),
-                child: "Add to cart".text.make(),
-              ).wh(120, 50),
-            ],
-          ).p32(),
-        ),
+        backgroundColor: context.theme.canvasColor,
+       
         body: SafeArea(
           bottom: false,
           child: Column(
@@ -47,12 +30,12 @@ class HomeDetailPage extends StatelessWidget {
                   arcType: VxArcType.CONVEY,
                   edge: VxEdge.TOP,
                   child: Container(
-                    color: Colors.white,
+                    color: context.theme.cardColor,
                     width: context.screenWidth,
                     child: Column(
                       children: [
                         catalog.name.text.xl4
-                            .color(MyTheme.darkBluishColor)
+                            .color(context.theme.accentColor)
                             .bold
                             .make(),
                         Opacity(
@@ -67,6 +50,25 @@ class HomeDetailPage extends StatelessWidget {
               )
             ],
           ),
-        ));
+        ),
+         bottomNavigationBar: Container(
+          color: context.theme.cardColor,
+          child: ButtonBar(
+            alignment: MainAxisAlignment.spaceBetween,
+            buttonPadding: EdgeInsets.zero,
+            children: [
+              "\$${catalog.price}".text.bold.red800.xl4.make(),
+              ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      context.theme.buttonColor,
+                    ),
+                    shape: MaterialStateProperty.all(StadiumBorder())),
+                child: "Add to cart".text.make(),
+              ).wh(120, 50),
+            ],
+          ).p32(),
+        ),);
   }
 }
