@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -34,9 +35,11 @@ class MyTheme {
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.white),
           //toolbarTextStyle: Theme.of(context).textTheme.bodyText2,
-          titleTextStyle: Theme.of(context).textTheme.headline6,
+          titleTextStyle: TextStyle(
+            color: context.theme.canvasColor,
+            fontSize: 25.0,
+          ),
         ),
-        
       );
   static Color creameColor = Color(0xfff5f5f5);
   static Color darkcreameColor = Vx.gray900;

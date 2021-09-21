@@ -13,12 +13,14 @@ class CatalogList extends StatelessWidget {
     return ListView.builder(
       itemCount: CatalogModel.items.length,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
+        final catalog = CatalogModel.getByPos(index);
         return InkWell(
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HomeDetailPage(catalog: catalog),
+              builder: (context) => HomeDetailPage(
+                catalog: CatalogModel.getById(2),
+              ),
             ),
           ),
           child: CatalogItem(catalog: catalog),
@@ -53,7 +55,11 @@ class CatalogItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // ignore: deprecated_member_use
-                catalog.name.text.lg.color(context.theme.accentColor).bold.make(),
+                catalog.name.text.lg
+                    // ignore: deprecated_member_use
+                    .color(context.theme.accentColor)
+                    .bold
+                    .make(),
                 Opacity(
                   opacity: 0.5,
                   child: catalog.desc.text.make(),
