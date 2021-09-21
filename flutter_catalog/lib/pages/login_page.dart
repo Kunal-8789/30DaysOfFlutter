@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/route.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -31,13 +32,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: context.theme.canvasColor,
       child: SingleChildScrollView(
         child: Column(
           children: [
             Image.asset(
               "assets/images/hey.png",
               fit: BoxFit.cover,
+              color:  context.canvasColor,
             ),
             SizedBox(
               height: 20.0,
@@ -96,7 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                     Material(
                       borderRadius:
                           BorderRadius.circular(changeButton ? 50 : 8),
-                      color: Colors.deepPurple,
+                      // ignore: deprecated_member_use
+                      color: context.theme.buttonColor,
                       child: InkWell(
                         onTap: () => moveToHome(context),
                         child: AnimatedContainer(
